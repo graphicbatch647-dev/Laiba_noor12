@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Flask Project</title>
+    <title>Weather App</title>
 </head>
 <body>
-    <h1>Welcome to My Flask App</h1>
-    <form action="/greet" method="POST">
-        <input type="text" name="name" placeholder="Enter your name" required>
-        <button type="submit">Greet Me</button>
+    <h1>🌤️ Weather App</h1>
+    <form method="POST">
+        <input type="text" name="city" placeholder="City ka naam likho" required>
+        <button type="submit">Search</button>
     </form>
+
+    {% if weather %}
+        <h2>{{ weather.city }}</h2>
+        <p>🌡️ Temperature: {{ weather.temp }}°C</p>
+        <p>💧 Humidity: {{ weather.humidity }}%</p>
+        <p>☁️ {{ weather.description }}</p>
+    {% endif %}
+
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
 </body>
 </html>
